@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import '../styles.css/homepage.css';
+import Details from './Details';
+import { Link, Navigate } from 'react-router-dom';
 const Homepage = () => {
     const [form, setForm] = useState({});
   const [data, setData] = useState([]);
@@ -38,21 +40,23 @@ const Homepage = () => {
 
 
        ))
-       
+
       setData(data1)
     }
       useEffect(() => {
         getAlldData()
-        getDepartmentData()
-        getLocationData()
-        getfunctions()
+       
 
         
        
       }, [])
     
       
-   
+   const getDetails=(id)=>{
+   <Navigate to=""/>
+
+
+   }
 
       
 
@@ -140,7 +144,9 @@ const Homepage = () => {
      
  return <>
  <div key={data.id}>{data.title}</div>
-<div>{data.department?.title} {data.location?.title}</div>
+<div>{data.department?.title} {data.location?.title}
+<Link to={`/jobs/${data.id}`}>details</Link>
+</div>
 
 
  </>
